@@ -1,0 +1,87 @@
+.sponsor-wrapper{
+    position: fixed;
+    right: -200px;
+    top: 30vh;
+    z-index: 2;
+    
+    .sponsor-content {
+        width: 263px;
+        position: relative;
+        transition: all ease 1s;
+        margin-top: 5px;
+        margin-left: 0px;
+        
+        &:hover {
+            transition: all ease 1s;
+            margin-left: -200px;
+        }
+        
+        .sponsor-background {
+            background: url(../../assets/images/redPaperPattern.jpg);
+            box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+
+            .sponsor-logo{
+                display: inline-block;
+                padding: 9px 5px;
+                
+                border: 1px solid black;
+                border-right: none;
+                border-top: none;
+            }
+
+            .sponsor-name {
+                float: right;
+                padding: 5px 0;
+                width: 190px;
+                border-top: 1px solid black;
+
+                span {
+                    float: left;
+                    clear: left;
+
+                    margin: 3px 0;
+
+                    color:white;
+                    font-family: 'Cinzel Decorative', cursive;
+                    font-size: 20px;
+
+                    &:nth-of-type(1) {
+                        margin-top:0px;
+                    }
+                }
+            }
+        }
+    }
+    
+    .sponsor-social{
+        border: 1px solid black;
+        border-top: none;
+        display: inline-block;
+        float: right;
+        width: 190px;
+        padding-left: 4px;
+        
+        .sponsor-icon{
+            width: 37px;
+            height: 37px;
+            display: inline-block;
+            margin: 2px;
+        }
+
+        .sponsor-explorer {
+            background: url(../../assets/images/socialExplorer.png);
+        }
+
+        .sponsor-facebook {
+            background: url(../../assets/images/socialFacebook.png);
+        }
+
+        .sponsor-twitter {
+            background: url(../../assets/images/socialTwitter.png);
+        }
+
+        .sponsor-youtube {
+            background: url(../../assets/images/socialYouTube.png);
+        }
+    }
+}

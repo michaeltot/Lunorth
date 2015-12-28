@@ -1,0 +1,125 @@
+.ticket-wrapper {
+    table {
+        background: rgba(255, 255, 255, 1);
+        thead {
+            p {
+                font-weight: 900;
+            }
+        }
+        tr {
+            td {
+                vertical-align: middle;
+            }
+            td:last-child {
+                white-space: nowrap;
+            }
+            td:first-child {
+                white-space: nowrap;
+            }
+            p {
+                position: relative;
+                top: 5px;
+            }
+            a {
+                width: 100%;
+                margin-top: 5px;
+            }
+        }
+    }
+    .ticket-total {
+        float: right;
+        margin-right: 5px;
+    }
+    .ticket-reservate {
+        float: right;
+        margin-right: 5px;
+    }
+    
+    .hover {
+        display: inline-block;
+    }
+    
+    .background-green {
+        background: rgba(0,255,0,.5);
+    }
+    .background-red {
+        background: rgba(255,0,0,.5);
+    }
+}
+
+.ticket-list {
+    
+}
+
+#printSection {
+    .print-header {}
+    .print-info-right {
+        width: 30%;
+        float: left;
+    }
+    .print-info-right {
+        width: 30%;
+        float: right;
+        
+        p {
+            font-weight: 900;
+            margin: 10px 0;
+        }
+    }
+    .print-left {
+        float: left;
+    }
+    .print-right {
+        float: right;
+    }
+    .print-bill {
+        table {
+            tr {
+                td:first-child {
+                    span {
+                        margin-right: 10px;
+                        white-space: nowrap;
+                    }
+                }
+                td:last-child {
+                    span {
+                        margin-left: 10px;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+        
+        .print-right {
+            font-weight: 900;
+        }
+    }
+    .print-contact {
+        margin-top: 50px;
+        
+        p {
+            text-align: center;
+        }
+    }
+}
+
+@media screen {
+    #printSection {
+        display: none;
+    }
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #printSection,
+    #printSection * {
+        visibility: visible;
+    }
+    #printSection {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}

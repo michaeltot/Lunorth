@@ -1,0 +1,114 @@
+@path-image: "../../assets/images/";
+.navbar-wrapper {
+    position: fixed;
+    width: 100%;
+    background: url("@{path-image}MenuBackground.jpg") no-repeat;
+    background-size: cover;
+    padding: 0 10%;
+    border-bottom: 1px solid white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
+    &:hover {
+        &.navbar-second {
+            transition: @navbar-second-hover-transition;
+            top: @navbar-second-hover-top;
+        }
+    }
+    ul {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px;
+        margin: 0px;
+        li {
+            list-style: none;
+            a {
+                color: white;
+                font-family: 'Cinzel Decorative', cursive;
+                text-shadow: 2px 2px rgba(0, 0, 0, 1);
+                float: left;
+                clear: left;
+                &:hover {
+                    color: rgba(255, 255, 255, .8);
+                    text-decoration: none;
+                }
+            }
+            
+            .navbar-admin {
+                border-top: 1px solid rgba(255,255,255,.25);
+            }
+        }
+    }
+}
+
+.navbar-first {
+    z-index: 12;
+    &:hover {
+        + .navbar-second {
+            transition: @navbar-second-hover-transition;
+            top: @navbar-second-hover-top;
+        }
+    }
+    a {
+        font-size: 30px;
+        
+        &:active {
+            text-decoration: none;
+        }
+        &:visited {
+            text-decoration: none;
+        }
+        &:link {
+            text-decoration: none;
+        }
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.navbar-second {
+    z-index: 11;
+    transition: top ease .5s;
+    top: -75px;
+    
+    a {
+        font-size: 20px;
+        
+        &:active {
+            text-decoration: none;
+        }
+        &:visited {
+            text-decoration: none;
+        }
+        &:link {
+            text-decoration: none;
+        }
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.navbar-language {
+    position: fixed;
+    top:42px;
+    right: 5px;
+    z-index: 10;
+    
+    a {
+        display: inline-block;
+        height: 77px;
+        width: 37px;
+    }
+    .navbar-flag-danish {
+        background: url("@{path-image}languageDansk.png") no-repeat;
+    }
+    .navbar-flag-english {
+        background: url("@{path-image}languageEnglish.png") no-repeat;
+    }
+    .navbar-flag-german {
+        background: url("@{path-image}languageDeutsch.png") no-repeat;
+    }
+}
+
+@navbar-second-hover-top: 40px;
+@navbar-second-hover-transition: top ease .5s;

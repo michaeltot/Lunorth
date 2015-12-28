@@ -1,0 +1,32 @@
+<div class="container">
+  <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="user in users">
+        <strong>{{ user.name | capitalize }}</strong><br>
+        <span class="text-muted">{{ user.email }}</span>
+        
+        <a href="/account/{{ user._id }}" class="trash edit"><span class="glyphicon glyphicon glyphicon-pencil pull-right"></span></a>
+        <a ng-hide="user.role === 'admin'" ng-click="showDeleteModal(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+    </li>
+  </ul>
+</div>
+
+<div class="modalDialog" ng-hide="deleteModal.hide">
+    <div>
+        <a href title="Close" class="close" ng-click="deleteModal.hide = true">X</a>
+
+        <h1>Delete</h1>
+
+        <div class="alert alert-warning" role="alert">
+            Do you want to delete this account?
+        </div>
+        
+        <strong>{{ deleteModal.item.name | capitalize }}</strong><br>
+        <span class="text-muted">{{ deleteModal.item.email }}</span>
+        
+        <p class="alert alert-warning" ng-hide="error.message.length === undefined">{{ error.message }}</p>
+
+        <a href class="btn btn-danger" ng-click="delete(deleteModal.item)"><span class="fa fa-trash"></span> Delete</a>
+        <a href class="btn btn-default" ng-click="deleteModal.hide = true">Cancel</a>
+    </div>
+</div>

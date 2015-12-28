@@ -1,0 +1,161 @@
+<div class="container ticket-wrapper">
+    <table class="table table-condensed">
+        <thead>
+            <td>
+                <h3>
+                    {{ messages.itemName }}
+                </h3>
+            </td>
+            <td>
+                <h3>
+                    {{ messages.itemDescription }}
+                </h3>
+            </td>
+            <td>
+                <h3>
+                    {{ messages.itemPrice }}
+                </h3>
+            </td>
+            <td>
+            </td>
+        </thead>
+        <tr ng-repeat="item in items">
+            <td>
+                <p>
+                    {{ item.name | capitalize }}
+                </p>
+            </td>
+            <td>
+                <p>
+                    {{ item.description }}
+                </p>
+            </td>
+            <td>
+                <p>
+                    {{ item.price | currency:"DKK " }}
+                </p>
+            </td>
+            <td>
+                <input ng-model="item.amount" type="number" min="0" class="form-control" ng-init="item.amount=0" ng-change="sum()" />
+            </td>
+        </tr>
+    </table>
+
+    <h3 class="ticket-total">
+        Total: {{ total | currency:"DKK " }}
+    </h3>
+
+    <div class="clearfix"></div>
+
+    <a class="btn btn-info ticket-reservate" ng-click="makeReservation()">{{ messages.reserve }}</a>
+
+    <div class="clearfix"></div>
+    <br/>
+
+    <p class="alert alert-success" ng-hide="message === ''">
+        {{ message }}
+    </p>
+    <p class="alert alert-danger" ng-hide="error === ''">
+        {{ error }}
+    </p>
+</div>
+
+<div id="printSection">
+    <div class="print-header">
+        <h2>
+            {{ messages.billConfirmation }}
+        </h2>
+    </div>
+    
+    <div class="print-info-left">
+        <span class="print-left">{{ user.name }}</span>
+        <br>
+        <span class="print-left">{{ user.email }}</span>
+    </div>
+
+    <div class="print-info-right">
+        <p>
+            {{ messages.billAdditions }}:
+        </p>
+        
+        <span class="print-left">{{ messages.billBookingNr }}.:</span>
+        <span class="print-right">{{ cart.payGroup }}</span>
+
+        <div class="clearfix"></div>
+        
+        <p>
+            {{ messages.billPaymentTo }}:
+        </p>
+
+        <span class="print-left">{{ messages.billAccountNr }}.:</span>
+        <span class="print-right">9212 - 0760379794</span>
+
+        <div class="clearfix"></div>
+
+        <span class="print-left">Bank:</span>
+        <span class="print-right">Sparekassen Vendsyssel</span>
+
+        <div class="clearfix"></div>
+
+        <span class="print-left">{{ messages.billAccountOwner }}:</span>
+        <span class="print-right">Østerskov Efterskole</span>
+
+        <div class="clearfix"></div>
+
+        <span class="print-left">{{ messages.billDueDate }}:</span>
+        <span class="print-right">{{ cart.dueDate }}</span>
+    </div>
+    
+    <div class="clearfix"></div>
+
+    <div class="print-bill">
+        <h3>
+            {{ messages.bill }}
+        </h3>
+        <table class="table table-condensed">
+            <thead>
+                <td>
+                    <span>
+                        {{ messages.itemName }}
+                    </span>
+                </td>
+                <td>
+                    <span>
+                        {{ messages.itemDescription }}
+                    </span>
+                </td>
+                <td>
+                    <span>
+                        {{ messages.itemPrice }}
+                    </span>
+                </td>
+            </thead>
+            <tr ng-repeat="item in cart.items">
+                <td>
+                    <span>
+                        {{ item.name | capitalize }}
+                    </span>
+                </td>
+                <td>
+                    <span>
+                        {{ item.description }}
+                    </span>
+                </td>
+                <td>
+                    <span>
+                        {{ item.amount }} x {{ item.price | currency:"DKK " }}
+                    </span>
+                </td>
+            </tr>
+        </table>
+        <span class="print-right">
+            {{ messages.billTotal }}: {{ total | currency:"DKK " }}
+        </span>
+    </div>
+
+    <div class="print-contact">
+        <p>
+            Lunorth Event | <i class="fa fa-envelope"></i> contact.lunorth@gmail.com
+        </p>
+    </div>
+</div>

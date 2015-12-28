@@ -1,0 +1,57 @@
+<div class="container account">
+    <h1>{{ messages.account }}</h1>
+
+    <p class="profile-information">
+        {{ messages.name }}: <span>{{ user.name }}</span>
+    </p>
+    <p class="profile-information">
+        {{ messages.email }}: <span>{{ user.email }}</span>
+    </p>
+    <p class="profile-information">
+        {{ messages.password }}: <a href="/settings">{{ messages.change }}</a>
+    </p>
+    
+    <hr>
+    
+    <h4>{{ messages.ticketOrdered }}</h4>
+    <table class="table table-condensed">
+        <thead>
+            <td>
+                <span>ID</span>
+            </td>
+            <td>
+                <span>{{ messages.name }}</span>
+            </td>
+            <td>
+                <span>{{ messages.itemPrice }}</span>
+            </td>
+        </thead>
+        <tr ng-repeat="item in tickets">
+            <td>
+                <span>{{ item.information.reservationNumber }}</span>
+            </td>
+            <td>
+                <span>{{ item.information.title }}</span>
+            </td>
+            <td>
+                <span>{{ item.price | currency:"DKK " }}</span>
+            </td>
+            <td>
+                <div class="hover">
+                    <div class="tooltip">{{ messages.paymentOverdue }}</div>
+                    <i class="fa fa-ban color-red" ng-show="banned(item)"></i>
+                </div>
+                
+                <div class="hover">
+                    <div class="tooltip">{{ messages.paymentApproved }}</div>
+                    <i class="fa fa-check-circle color-green" ng-show="item.paid"></i>
+                </div>
+                
+                <div class="hover">
+                    <div class="tooltip">{{ messages.paymentWaiting }}</div>
+                    <i class="fa fa-exclamation-circle color-yellow" ng-show="waiting(item)"></i>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,17 @@
+<div class="splash"></div>
+
+<div class="container">
+    <a ng-click="edit = true" ng-show="isAdmin" class="fa fa-pencil pull-right"></a>
+    
+    <text-angular ng-model="page" ng-show="edit"></text-angular>
+    
+    <br>
+    
+    <a ng-click="save()" class="btn btn-success pull-right" ng-show="edit">Save</a>
+    
+    <p class="alert alert-danger" ng-hide="error === ''">
+        {{ error }}
+    </p>
+    
+    <div ng-bind-html="page"></div>
+</div>

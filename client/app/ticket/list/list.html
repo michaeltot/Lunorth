@@ -1,0 +1,120 @@
+<div class="container ticket-wrapper">
+    <table class="table table-condensed table-hover">
+        <thead>
+            <td>
+                <span>
+                    {{ messages.bookingNr }}.
+                </span>
+            </td>
+            <td>
+                <span>
+                    {{ messages.owner }}
+                </span>
+            </td>
+            <td>
+                <span>
+                    {{ messages.email }}
+                </span>
+            </td>
+            <td>
+                <span>
+                    {{ messages.itemName }}
+                </span>
+            </td>
+            <td>
+                <span>
+                    {{ messages.itemPrice }}
+                </span>
+            </td>
+            <td>
+                <span>
+                    {{ messages.status }}
+                </span>
+            </td>
+        </thead>
+        <tr ng-repeat="item in items" ng-class="{'background-green':item.paid, 'background-red':banned(item)}">
+            <td>
+                <span>
+                    {{ item.information.reservationNumber }}
+                </span>
+            </td>
+            <td>
+                <a href="/account/{{ item.owner._id }}">{{ item.owner.name | capitalize }}</a>
+            </td>
+            <td>
+                <span>
+                    {{ item.owner.email | capitalize }}
+                </span>
+            </td>
+            <td>
+                <span>
+                    {{ item.information.title | capitalize }}
+                </span>
+            </td>
+            <td>
+                <span>
+                    {{ item.price | currency:"DKK " }}
+                </span>
+            </td>
+            <td>
+                <div class="hover">
+                    <div class="tooltip">{{ messages.paymentOverdue }}</div>
+                    <i class="fa fa-ban" ng-show="banned(item)"></i>
+                </div>
+                
+                <div class="hover">
+                    <div class="tooltip">{{ messages.paymentApproved }}</div>
+                    <i class="fa fa-check-circle" ng-show="item.paid"></i>
+                </div>
+                
+                <div class="hover">
+                    <div class="tooltip">{{ messages.paymentWaiting }}</div>
+                    <i class="fa fa-exclamation-circle" ng-show="waiting(item)"></i>
+                </div>
+                
+                <div class="hover">
+                    <div class="tooltip">{{ messages.paid }}</div>
+                    <a class="fa fa-thumbs-up" ng-show="!item.paid" ng-click="update(item)"></a>
+                </div>
+                
+                <div class="hover">
+                    <div class="tooltip">{{ messages.delete }}</div>
+                    <a class="fa fa-trash" ng-click="showDeleteModal(item)"></a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="modalDialog" ng-hide="deleteModal.hide">
+    <div>
+        <a href title="Close" class="close" ng-click="deleteModal.hide = true">X</a>
+
+        <h1>Delete</h1>
+
+        <div class="alert alert-warning" role="alert">
+            Do you want to delete this item?
+        </div>
+        
+        <p>
+            {{ messages.bookingNr }}.: <span>{{ deleteModal.item.information.reservationNumber }}</span>
+        </p>
+        <p>
+            {{ messages.owner }}: <span>{{ deleteModal.item.owner.name | capitalize }}</span>
+        </p>
+        <p>
+            {{ messages.email }}: <span>{{ deleteModal.item.owner.email | capitalize }}</span>
+        </p>
+        <p>
+            {{ messages.itemName }}: <span>{{ deleteModal.item.information.title | capitalize }}</span>
+        </p>
+        <p>
+            {{ messages.itemPrice }}: <span>{{ deleteModal.item.price | currency:"DKK " }}</span>
+        </p>
+        
+        <p class="alert alert-warning" ng-hide="error.message.length === undefined">{{ error.message }}</p>
+
+        <a href class="btn btn-danger" ng-click="delete(deleteModal.item)"><span class="fa fa-trash"></span> Delete</a>
+        <a href class="btn btn-default" ng-click="deleteModal.hide = true">Cancel</a>
+    </div>
+</div>

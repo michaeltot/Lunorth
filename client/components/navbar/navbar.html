@@ -1,0 +1,50 @@
+<div class="navbar-wrapper navbar-first">
+    <ul>
+        <li>
+            <a href="/">{{ messages.navHome }}</a>
+        </li>
+        <li>
+            <a href="/page/rules">{{ messages.navRules }}</a>
+        </li>
+        <li>
+            <a href="/page/concept">{{ messages.navConcept }}</a>
+        </li>
+        <li>
+            <a href="/{{ ticketRoute }}">{{ messages.navTickets }}</a>
+        </li>
+    </ul>
+</div>
+
+<div class="navbar-wrapper navbar-second">
+    <ul>
+        <li></li>
+
+        <li></li>
+
+        <li>
+            <a href="/page/introduction">{{ messages.navIntroduction }}</a>
+            <a href="/page/tournament">{{ messages.navTournament }}</a>
+            <a href="/page/characters">{{ messages.navCharacters }}</a>
+            <a href="/page/world">{{ messages.navWorld }}</a>
+        </li>
+
+        <li>
+            <div ng-show="user.isLoggedIn">
+                <a ng-click="signOut()">{{ messages.signOut }}</a>
+                <a href="/account">{{ messages.account }}</a>
+                <div class="clearfix"></div>
+
+                <div ng-show="isAdmin" class="navbar-admin">
+                    <a href="/admin">{{ messages.users }}</a>
+                    <a href="/ticket/list">{{ messages.ticketList }}</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="navbar-language">
+    <a ng-click="setLanguage('dansk')" class="navbar-flag-danish"></a>
+    <a ng-click="setLanguage('english')" class="navbar-flag-english"></a>
+    <a ng-click="setLanguage('deutsch')" class="navbar-flag-german"></a>
+</div>
