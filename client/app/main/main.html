@@ -1,6 +1,13 @@
-<div class="splash"></div>
+<div class="splash" ng-hide="toggle" ng-animate="'splash'">
+    <a href ng-click="toggle = true">
+        <h1>{{ messages.readMore }}</h1>
+        <h1>
+            <i class="fa fa-arrow-circle-down"></i>
+        </h1>
+    </a>
+</div>
 
-<div class="container">
+<div class="container" id="readMore">
     <a ng-click="edit = true" ng-show="isAdmin" class="fa fa-pencil pull-right"></a>
     
     <text-angular ng-model="page" ng-show="edit"></text-angular>

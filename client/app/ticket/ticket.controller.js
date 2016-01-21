@@ -10,17 +10,17 @@ angular.module('lunorthApp')
                 {
                     danish: {
                         name: 'spiller-billet',
-                        description: 'Billetten giver adgang for een person til rollespillet "Lunorth Turneringen" den 9 til 11 september 2016.',
+                        description: 'Billetten giver adgang for een person til rollespillet "Lunorth Turneringen" den 9 til 11 september 2016.<br/>Sted: Kirketoften 4, 9500 Hobro, Danmark',
                         price: 100.00
                     },
                     english: {
                         name: 'player-ticket',
-                        description: 'The ticket grants one person access to the LARP event "The Lunorth Tournament" the 9th to 11th september 2016.',
+                        description: 'The ticket grants one person access to the LARP event "The Lunorth Tournament" the 9th to 11th september 2016.<br/>Location: Kirketoften 4, 9500 Hobro, Denmark',
                         price: 100.00
                     },
                     german: {
                         name: 'spieler-ticket',
-                        description: 'Das Ticket gewährt eine Person Zugriff auf die LARP-Event "Die Lunorth Turnier" 9. bis 11. September 2016.',
+                        description: 'Das Ticket gewährt eine Person Zugriff auf die LARP-Event "Die Lunorth Turnier" 9. bis 11. September 2016.<br/>Lage: Kirketoften 4, 9500 Hobro, Dänemark',
                         price: 100.00
                     }
                 }
@@ -57,7 +57,6 @@ angular.module('lunorthApp')
             }
 
             $scope.total = 0;
-            console.log('result : ', result);
             $scope.items = result;
         };
 
@@ -158,7 +157,8 @@ angular.module('lunorthApp')
                                     if (language === 'deutsch') {
                                         $scope.message = 'Reservierung gelungen.';
                                     }
-                                    Print.start();
+                                    
+                                    $state.go('printBill', { id: $scope.cart.payGroup });
                                 }
                             })
                             .catch(function (error) {

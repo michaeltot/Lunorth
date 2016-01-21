@@ -12,6 +12,7 @@ angular.module('lunorthApp')
                 hide: true,
                 item: null
             };
+        $scope.isAdmin = Auth.isAdmin();
         setItems();
 
         function setItems() {
@@ -40,11 +41,23 @@ angular.module('lunorthApp')
     
         $scope.update = function(item){
             item.paid = true;
+            item.ticketSend = false;
             item.owner = item.owner._id;
             
             ticketService.update(item)
                 .then(function(response){
-                    console.log('Updated : ', response.data);
+                })
+                .catch(function(error) {
+                    console.log('Error : ', error);
+                });
+        };
+    
+        $scope.isSend = function(item){
+            item.ticketSend = true;
+            item.owner = item.owner._id;
+            
+            ticketService.update(item)
+                .then(function(response){
                 })
                 .catch(function(error) {
                     console.log('Error : ', error);

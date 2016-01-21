@@ -26,6 +26,8 @@ angular.module('lunorthApp')
                 messages = {};
             
             if(language === 'dansk'){
+                messages.accountReturn = "Tilbage til profil";
+                messages.readMore = "Læs mere";
                 messages.invalidPassword = 'Indtast email og password.';
                 messages.invalidEmail = 'Indtast gyldig email.';
                 messages.invalidName = 'Indtast gyldigt navn.';
@@ -47,11 +49,16 @@ angular.module('lunorthApp')
                 messages.billAccountOwner = 'Ejer';
                 messages.billDueDate = 'Indbetaling senest';
                 messages.billTotal = 'Ialt at betale';
+                messages.billPrint = 'Klik for at printe regning';
                 messages.users = 'Brugere';
                 messages.ticket = 'Billetter';
                 messages.ticketList = 'Billet liste';
                 messages.ticketMyList = 'Mine billetter';
                 messages.ticketOrdered = 'Bestilte billetter';
+                messages.ticketPrint = 'Print billet';
+                messages.ticketClickToPrint = 'Klik for at printe billet';
+                messages.ticketSend = 'Billetten er sendt';
+                messages.ticketNotSend = 'Billetten er ikke sendt';
                 messages.signOut = 'Log ud';
                 messages.account = 'Profil';
                 messages.email = 'Email';
@@ -73,8 +80,11 @@ angular.module('lunorthApp')
                 messages.navTournament = 'Turnering';
                 messages.navCharacters = 'Helte & Skurke';
                 messages.navWorld = 'Verdenen';
+                messages.navPractical = 'Praktisk';
             }
             if(language === 'english'){
+                messages.accountReturn = "Return to profile";
+                messages.readMore = "Read more";
                 messages.invalidPassword = 'Please enter your email and password.';
                 messages.invalidEmail = 'Please enter a valid email.';
                 messages.invalidName = 'Please enter a valid name.';
@@ -96,11 +106,16 @@ angular.module('lunorthApp')
                 messages.billAccountOwner = 'Owner';
                 messages.billDueDate = 'Payment before';
                 messages.billTotal = 'Total cost';
+                messages.billPrint = 'Click to print bill';
                 messages.users = 'Users';
                 messages.ticket = 'Tickets';
                 messages.ticketList = 'Tickets list';
                 messages.ticketMyList = 'My tickets';
                 messages.ticketOrdered = 'Ordered tickets';
+                messages.ticketPrint = 'Print ticket';
+                messages.ticketClickToPrint = 'Click to print ticket';
+                messages.ticketSend = 'Ticket has been send';
+                messages.ticketNotSend = "Ticket hasn't been send yet";
                 messages.signOut = 'Sign out';
                 messages.account = 'Account';
                 messages.email = 'Email';
@@ -122,8 +137,11 @@ angular.module('lunorthApp')
                 messages.navTournament = 'Tournament';
                 messages.navCharacters = 'Heroes & Rogues';
                 messages.navWorld = 'The World';
+                messages.navPractical = 'Practical';
             }
             if(language === 'deutsch'){
+                messages.accountReturn = "Zurück zum Profil";
+                messages.readMore = "Weiterlesen";
                 messages.invalidPassword = 'Bitte geben Sie Ihre E-Mail und Passwort.';
                 messages.invalidEmail = 'Bitte geben Sie eine gültige Email-Adresse ein.';
                 messages.invalidName = 'Bitte geben Sie einen gültigen Namen ein.';
@@ -145,11 +163,16 @@ angular.module('lunorthApp')
                 messages.billAccountOwner = 'Inhaber';
                 messages.billDueDate = 'Zahlung vor';
                 messages.billTotal = 'Gesamtkosten';
+                messages.billPrint = 'Klicken Sie hier um bill drucken';
                 messages.users = 'Benutzer';
                 messages.ticket = 'Karten';
                 messages.ticketList = 'Karten liste';
                 messages.ticketMyList = 'Meine Karten';
                 messages.ticketOrdered = 'Bestellten Karten';
+                messages.ticketPrint = 'Drucken Sie Ihr Ticket';
+                messages.ticketClickToPrint = 'Klicken, um Ticket ausdrucken';
+                messages.ticketSend = 'Karte wurde gesendet';
+                messages.ticketNotSend = "Karten noch nicht gesendet worden";
                 messages.signOut = 'Abmelden';
                 messages.account = 'Profil';
                 messages.email = 'Email';
@@ -171,6 +194,7 @@ angular.module('lunorthApp')
                 messages.navTournament = 'Turnier';
                 messages.navCharacters = 'Helden & Schurken';
                 messages.navWorld = 'Die Welt';
+                messages.navPractical = 'Praktisch';
             }
             
             return messages;

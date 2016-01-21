@@ -42,6 +42,10 @@ var TicketSchema = new Schema({
     reservationDate: {
         type: Date,
         required: true
+    },
+    ticketSend: {
+        type: Boolean,
+        default: false
     }
 });
 

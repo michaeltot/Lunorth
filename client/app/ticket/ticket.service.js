@@ -8,6 +8,14 @@ angular.module('lunorthApp')
             return $http.get('api/tickets/');
         };
     
+        service.findById = function(id){
+            return $http.get('api/tickets/' + id);
+        };
+    
+        service.findByGroup = function(id){
+            return $http.get('api/tickets/group/' + id);
+        };
+    
         service.findByOwner = function(owner){
             return $http.get('api/tickets/owner/' + owner._id);
         };

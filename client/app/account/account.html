@@ -37,20 +37,40 @@
                 <span>{{ item.price | currency:"DKK " }}</span>
             </td>
             <td>
-                <div class="hover">
+                <div class="hover" ng-show="banned(item)">
                     <div class="tooltip">{{ messages.paymentOverdue }}</div>
-                    <i class="fa fa-ban color-red" ng-show="banned(item)"></i>
+                    <i class="fa fa-ban color-red"></i>
                 </div>
                 
-                <div class="hover">
+                <div class="hover" ng-show="item.paid">
                     <div class="tooltip">{{ messages.paymentApproved }}</div>
-                    <i class="fa fa-check-circle color-green" ng-show="item.paid"></i>
+                    <i class="fa fa-check-circle color-green"></i>
                 </div>
                 
-                <div class="hover">
+                <div class="hover" ng-show="waiting(item)">
                     <div class="tooltip">{{ messages.paymentWaiting }}</div>
-                    <i class="fa fa-exclamation-circle color-yellow" ng-show="waiting(item)"></i>
+                    <i class="fa fa-exclamation-circle color-yellow"></i>
                 </div>
+                
+                <a class="hover" href="/print/ticket/{{ item._id }}" ng-show="item.paid">
+                    <div class="tooltip">{{ messages.ticketPrint }}</div>
+                    <i class="fa fa-print color-black"></i>
+                </a>
+                
+                <a class="hover" href="/print/bill/{{ item.payGroup }}" ng-show="waiting(item)">
+                    <div class="tooltip">{{ messages.billPrint }}</div>
+                    <i class="fa fa-print color-black"></i>
+                </a>
+                
+                <div class="hover" ng-show="isAdmin && item.paid && item.ticketSend">
+                    <div class="tooltip">{{ messages.ticketSend }}</div>
+                    <i class="fa fa-paper-plane color-green"></i>
+                </div>
+                
+                <a class="hover" ng-show="isAdmin && item.paid && !item.ticketSend">
+                    <div class="tooltip">{{ messages.ticketNotSend }}</div>
+                    <i class="fa fa-paper-plane color-red" ng-click="isSend(item)"></i>
+                </a>
             </td>
         </tr>
     </table>

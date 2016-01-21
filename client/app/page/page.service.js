@@ -21,14 +21,21 @@ angular.module('lunorthApp')
                             page = pages[i];
                         }
                     }
-                
-                    if(page === undefined){
+
+                    if (page === undefined) {
                         $http.get('/api/pages/page/' + pageName)
-                            .then(function(response){
+                            .then(function (response) {
+                                if ($localStorage.pages === undefined) {
+                                    $localStorage.pages = [];
+                                }
+
+                                console.log('$localStorage.pages : ', $localStorage.pages);
+                                console.log('response.data : ', response.data);
+
                                 $localStorage.pages.push(response.data);
                                 promise.resolve(response.data);
                             })
-                            .catch(function(error){
+                            .catch(function (error) {
                                 promise.reject(error);
                             });
                     } else {
@@ -55,15 +62,15 @@ angular.module('lunorthApp')
             if (language === 'deutsch') {
                 page.content.deutsch = item;
             }
-            
+
             console.log('page : ', page);
-            
+
             return $http.put('/api/pages/' + page._id, page);
         };
 
         service.setPage = function (page) {
             var language = languageService.get();
-            
+
             if (language === 'dansk') {
                 return page.content.dansk;
             }
@@ -80,19 +87,23 @@ angular.module('lunorthApp')
         function get() {
             var promise = $q.defer();
 
-            if ($localStorage.pages !== undefined) {
-                $http.get('/api/pages/')
-                    .then(function (response) {
+            $http.get('/api/pages/')
+                .then(function (response) {
+                    if (response.data._id !== undefined) {
+                        $localStorage.pages = [];
+                        $localStorage.pages.push(response.data);
+                    } else {
                         $localStorage.pages = response.data;
-                        promise.resolve($localStorage.pages);
-                    })
-                    .catch(function (error) {
-                        promise.reject(error);
-                    });
-            } else {
-                console.log('local : ', $localStorage.pages);
-                promise.resolve($localStorage.pages);
-            }
+                    }
+
+                    console.log('$localStorage.pages : ', $localStorage.pages);
+                    console.log('response.data : ', response.data);
+
+                    promise.resolve($localStorage.pages);
+                })
+                .catch(function (error) {
+                    promise.reject(error);
+                });
 
             return promise.promise;
         };

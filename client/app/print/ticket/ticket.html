@@ -1,0 +1,45 @@
+<div class="container print">
+    <a href="/account/{{ user._id }}">{{ messages.accountReturn }}</a>
+    <h3><a ng-click="print()">{{ messages.ticketClickToPrint }}</a></h3>
+</div>
+
+<div id="printSection">
+    <img src="../../../assets/images/Splash-lighten.jpg">
+    <div class="printContent">
+        <div class="print-header">
+            <h2>
+                {{ ticket.information.title }}
+            </h2>
+        </div>
+
+        <div class="print-info-left">
+            <span class="print-left">{{ user.name }}</span>
+            <br>
+            <span class="print-left">{{ user.email }}</span>
+        </div>
+
+        <div class="print-info-right">
+            <span class="print-left">{{ message.bookingNr }}.</span>
+            <span class="print-right">{{ ticket.information.reservationNumber }}</span>
+
+            <div class="clearfix"></div>
+
+            <span class="print-left">{{ message.value }}</span>
+            <span class="print-right">{{ ticket.price | currency:"DKK " }}</span>
+
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="print-bill">
+            <span class="print-center" ng-bind-html="ticket.information.description"></span>
+        </div>
+
+        <div class="print-contact">
+            <p>
+                Lunorth Event | <i class="fa fa-envelope"></i> contact.lunorth@gmail.com
+            </p>
+        </div>
+    </div>
+</div>

@@ -6,6 +6,7 @@ angular.module('lunorthApp')
         $scope.isAdmin = Auth.isAdmin();
         $scope.edit = false;
         $scope.error = '';
+        $scope.messages = languageService.texts();
         findPage();
 
         $scope.save = function () {
@@ -38,5 +39,7 @@ angular.module('lunorthApp')
             } else {
                 $scope.page = pageService.setPage(page);
             }
+            
+            $scope.messages = languageService.texts();
         });
     });

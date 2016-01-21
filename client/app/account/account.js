@@ -28,8 +28,6 @@ angular.module('lunorthApp')
                 },
                 resolve: {
                     account: function ($stateParams, User) {
-                        console.log('id : ', $stateParams.id);
-                        
                         if($stateParams.id === null){
                             return null;
                         } else {

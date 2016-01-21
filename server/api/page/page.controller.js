@@ -10,7 +10,7 @@ exports.index = function (req, res) {
             return handleError(res, err);
         }
         
-        if(pages.length === 0){
+        if((!pages) || (pages.length === 0)){
             return populate(res);
         }
         

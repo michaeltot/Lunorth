@@ -17,8 +17,9 @@ exports.index = function (req, res) {
 
 // Get a single ticket
 exports.show = function (req, res) {
-    Ticket.find()
-        .where('_id').equals(req.params.id)
+    Ticket.findOne({
+            _id: req.params.id
+        })
         .populate('owner')
         .exec(function (err, ticket) {
             if (err) {
@@ -37,6 +38,26 @@ exports.getByOwner = function (req, res) {
 
     Ticket.find()
         .where('owner').equals(ownerId)
+        .populate('owner')
+        .exec(function (error, items) {
+            if (error) {
+                return handleError(res, error);
+            }
+
+            if (!items) {
+                return res.status(404).send('Not Found');
+            }
+
+            return res.json(items);
+        });
+};
+
+// Get a tickets based on group
+exports.getByGroup = function (req, res) {
+    var id = req.params.id;
+
+    Ticket.find()
+        .where('payGroup').equals(id)
         .populate('owner')
         .exec(function (error, items) {
             if (error) {
